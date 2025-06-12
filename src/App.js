@@ -27,14 +27,16 @@ function App() {
 
   if (!isAuthenticated) {
     return (
-      <div style={{ textAlign: 'center', marginTop: '20vh' }}>
-        <h2>Voce e minha novinha e eu sou seu:</h2>
-        <input
-          type="password"
-          value={inputPassword}
-          onChange={e => setInputPassword(e.target.value)}
-        />
-        <button onClick={handleLogin}>Ok</button>
+      <div className='App'>
+        <div style={{ textAlign: 'center', marginTop: '20vh' }}>
+          <h2>Voce e minha novinha e eu sou seu:</h2>
+          <input
+            type="password"
+            value={inputPassword}
+            onChange={e => setInputPassword(e.target.value)}
+          />
+          <button onClick={handleLogin}>Ok</button>
+        </div>
       </div>
     );
   }
