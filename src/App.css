@@ -19,7 +19,17 @@
   justify-content: center;
   align-items: center;
   background-color: white;
+
+}
+
+.Polaroid {
+  background-color: white;
+  height: 363px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 100px;
   margin-top: 300px;
+  padding: 110px 10px 147px 10px;
 }
 
