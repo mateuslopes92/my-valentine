@@ -1,7 +1,8 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './App.css';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import { Carousel } from "react-responsive-carousel";
 import TimeCounter from "./Timer";
 import image1 from "./assets/image1.JPG";
@@ -16,6 +17,34 @@ function App() {
   const queNosFalamos = "2025-03-16T00:00:00";
   const beijo = "2025-03-22T00:00:00";
   const password = "velhote";
+
+  const [poster1, setPoster1] = useState(null);
+  const [poster3, setPoster3] = useState(null);
+
+  const generatePoster = (videoSrc, setPoster) => {
+    const video = document.createElement("video");
+    video.src = videoSrc;
+    video.crossOrigin = "anonymous";
+    video.muted = true;
+    video.currentTime = 1;
+
+    video.addEventListener("loadeddata", () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataURL = canvas.toDataURL("image/png");
+        setPoster(dataURL);
+      }
+    });
+  };
+
+  useEffect(() => {
+    generatePoster(video1, setPoster1);
+    generatePoster(video3, setPoster3);
+  }, []);
 
   const handleLogin = () => {
     if (inputPassword.toLocaleLowerCase() === password.toLocaleLowerCase()) {
@@ -57,16 +86,16 @@ function App() {
               <img height={500}  src={image6} alt="Slide 6" />
             </div>
             <div>
-              <video controls width="100%">
+             <video controls width="100%" poster={poster3 || undefined}>
                 <source src={video3} type="video/mp4" />
                 Your browser does not support the video tag.
-              </video>
+             </video>
             </div>
             <div>
               <img height={500}  src={image1} alt="Slide 1" />
             </div>
             <div>
-              <video controls width="100%">
+              <video controls width="100%" poster={poster1 || undefined}>
                 <source src={video1} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
