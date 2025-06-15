@@ -7,6 +7,8 @@ import { Carousel } from "react-responsive-carousel";
 import TimeCounter from "./Timer";
 import image1 from "./assets/image1.JPG";
 import image6 from "./assets/image6.png";
+import lua from "./assets/Lua.mp3";
+import quandoelapassa from "./assets/quandoelapassa.mp3";
 import video1 from "./assets/video1.mp4";
 import video3 from "./assets/video3.mp4";
 
@@ -120,6 +122,12 @@ function App() {
         >
           Pra voce lembrar de quantos dias se passaram da minha melhor decisao... E que a gente possa voltar aqui e ver que os dias so aumentaram, viraram meses, anos, pra sempre... Eu te amo tanto, Kessily Moreira (um dia Kessily Moreira Lopes) ❤️
         </div>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: -40, gap: 20, paddingBottom: 40 }}>
+        <div style={{ backgroundColor: 'white', width: 200, height: 2, marginTop: 20  }} />
+        <audio src={lua} autoPlay loop controls  />
+        <audio src={quandoelapassa} loop controls  />
       </div>
     </div>
   );
