@@ -12,6 +12,20 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        window.OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+                appId: "b896c299-22e4-4100-9626-d8a500d6fe12",
+                notifyButton: {
+                    enable: true
+                },
+                serviceWorkerPath: "%PUBLIC_URL%/OneSignalSDKWorker.js",
+            });
+        });
+    </script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
